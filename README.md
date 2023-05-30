@@ -1,1 +1,3 @@
-# java-spring-cleanarchitecture-ddd
+# java-spring-cleanarchitecture
+
+1.0
