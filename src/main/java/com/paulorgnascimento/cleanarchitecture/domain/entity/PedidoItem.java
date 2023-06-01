@@ -1,28 +1,21 @@
 package com.paulorgnascimento.cleanarchitecture.domain.entity;
 
 public class PedidoItem {
-    private UUID id;
+
+    private Long id;
     private String produto;
-    private Integer quantidade;
+    private int quantidade;
 
-    public PedidoItem(String produto, Integer quantidade) {
+    public PedidoItem(Long id, String produto, int quantidade) {
+        this.id = id;
         this.produto = produto;
         this.quantidade = quantidade;
     }
 
-    public String getProduto() {
-        return produto;
-    }
+    public Long getId() { return id; }
 
-    private void setProduto(String produto) {
-        this.produto = produto;
-    }
+    public String getProduto() { return produto; }
 
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    private void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
+    public int getQuantidade() { return quantidade; }
 }
+

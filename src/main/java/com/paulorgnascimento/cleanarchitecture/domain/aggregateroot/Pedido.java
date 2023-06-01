@@ -1,29 +1,29 @@
 package com.paulorgnascimento.cleanarchitecture.domain.aggregateroot;
 
+import com.paulorgnascimento.cleanarchitecture.domain.entity.PedidoItem;
+import com.paulorgnascimento.cleanarchitecture.domain.valueobject.Endereco;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pedido {
-    private UUID id;
+
+    private Long id;
     private List<PedidoItem> itens;
-    private Endereco enderecoEntrega;
+    private Endereco enderecoDeEntrega;
 
-
-    public Pedido(List<PedidoItem> itens, Endereco enderecoEntrega) {
-        this.itens = itens;
-        this.enderecoEntrega = enderecoEntrega;
+    public Pedido(Long id, Endereco enderecoDeEntrega) {
+        this.id = id;
+        this.itens = new ArrayList<>();
+        this.enderecoDeEntrega = enderecoDeEntrega;
     }
 
-    public List<PedidoItem> getItens() {
-        return itens;
-    }
+    public Long getId() { return id; }
 
-    private void setItens(List<PedidoItem> itens) {
-        this.itens = itens;
-    }
+    public List<PedidoItem> getItens() { return itens; }
+    public void addItem(PedidoItem item) { this.itens.add(item); }
 
-    public Endereco getEnderecoEntrega() {
-        return enderecoEntrega;
-    }
-
-    private void setEnderecoEntrega(Endereco enderecoEntrega) {
-        this.enderecoEntrega = enderecoEntrega;
-    }
+    public Endereco getEnderecoDeEntrega() { return enderecoDeEntrega; }
 }
+
+
