@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "pedidos")
-public class PedidoMapping {
+public class AgregadoMapping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +17,9 @@ public class PedidoMapping {
     @Column(name = "cep_de_entrega")
     private String cepDeEntrega;
 
-    public PedidoMapping() {}
+    public AgregadoMapping() {}
 
-    public PedidoMapping(String cepDeEntrega) {
+    public AgregadoMapping(String cepDeEntrega) {
         this.cepDeEntrega = cepDeEntrega;
     }
 

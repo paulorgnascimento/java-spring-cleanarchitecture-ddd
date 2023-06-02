@@ -4,6 +4,6 @@ import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface TB_EntidadeMapper {
-    TB_Entidade toTableDto(Entidade entity);
+public interface EntidadeDomainToDataMapper {
+    TB_Entidade domainToData(Entidade entity);
 }

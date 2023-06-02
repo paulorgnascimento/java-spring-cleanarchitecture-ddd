@@ -1,13 +1,13 @@
 package com.paulorgnascimento.cleanarchitecture.domain.valueobject;
 
-public class Endereco {
+public class ObjetoDeValor {
 
     private String rua;
     private String cidade;
     private String estado;
     private String cep;
 
-    public Endereco(String rua, String cidade, String estado, String cep) {
+    public ObjetoDeValor(String rua, String cidade, String estado, String cep) {
         this.rua = rua;
         this.cidade = cidade;
         this.estado = estado;

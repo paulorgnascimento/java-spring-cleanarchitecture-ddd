@@ -1,6 +1,6 @@
 package com.paulorgnascimento.cleanarchitecture.interfaces.rest.controller;
 
-import com.paulorgnascimento.cleanarchitecture.application.dto.EntidadeDto;
+import com.paulorgnascimento.cleanarchitecture.application.dto.EntidadeInDto;
 import com.paulorgnascimento.cleanarchitecture.application.services.EntidadeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ public class EntidadeController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> criarEntidade(@RequestBody EntidadeDto entidadeDto) {
-        entidadeService.criarEntidade(entidadeDto);
+    public ResponseEntity<Void> criarEntidade(@RequestBody EntidadeInDto entidadeInDto) {
+        entidadeService.criarEntidade(entidadeInDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

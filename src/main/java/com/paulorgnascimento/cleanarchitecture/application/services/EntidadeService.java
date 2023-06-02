@@ -1,7 +1,7 @@
 package com.paulorgnascimento.cleanarchitecture.application.services;
 
-import com.paulorgnascimento.cleanarchitecture.application.dto.EntidadeDto;
+import com.paulorgnascimento.cleanarchitecture.application.dto.EntidadeInDto;
 
 public interface EntidadeService {
-    void criarEntidade(EntidadeDto entidadeDto);
+    void criarEntidade(EntidadeInDto entidadeInDto);
 }

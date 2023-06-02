@@ -12,7 +12,7 @@ public class PedidoItemMapping {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
-    private PedidoMapping pedido;
+    private AgregadoMapping pedido;
 
     @Column(name = "produto")
     private String produto;
@@ -22,7 +22,7 @@ public class PedidoItemMapping {
 
     public PedidoItemMapping() {}
 
-    public PedidoItemMapping(PedidoMapping pedido, String produto, int quantidade) {
+    public PedidoItemMapping(AgregadoMapping pedido, String produto, int quantidade) {
         this.pedido = pedido;
         this.produto = produto;
         this.quantidade = quantidade;
@@ -30,8 +30,8 @@ public class PedidoItemMapping {
 
     public Long getId() { return id; }
 
-    public PedidoMapping getPedido() { return pedido; }
-    public void setPedido(PedidoMapping pedido) { this.pedido = pedido; }
+    public AgregadoMapping getPedido() { return pedido; }
+    public void setPedido(AgregadoMapping pedido) { this.pedido = pedido; }
 
     public String getProduto() { return produto; }
     public void setProduto(String produto) { this.produto = produto; }
