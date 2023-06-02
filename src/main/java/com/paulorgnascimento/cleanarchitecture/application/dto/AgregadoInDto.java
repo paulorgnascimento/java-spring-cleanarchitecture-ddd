@@ -1,32 +1,20 @@
 package com.paulorgnascimento.cleanarchitecture.application.dto;
 
 import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class AgregadoInDto {
 
-    private List<Entidade> itens;
-    private String enderecoDeEntrega;
+    private List<Entidade> campo1;
+    private String campo2;
 
-    public AgregadoInDto(List<Entidade> itens, String enderecoDeEntrega) {
-        this.itens = itens;
-        this.enderecoDeEntrega = enderecoDeEntrega;
-    }
-
-    public List<Entidade> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<Entidade> itens) {
-        this.itens = itens;
-    }
-
-    public String getEnderecoDeEntrega() {
-        return enderecoDeEntrega;
-    }
-
-    public void setEnderecoDeEntrega(String enderecoDeEntrega) {
-        this.enderecoDeEntrega = enderecoDeEntrega;
-    }
 }

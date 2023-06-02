@@ -1,19 +1,16 @@
 package com.paulorgnascimento.cleanarchitecture.application.services;
 
 import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoInDto;
-import com.paulorgnascimento.cleanarchitecture.application.dto.EntidadeInDto;
+import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoOutDto;
 import com.paulorgnascimento.cleanarchitecture.application.mapper.AgregadoDomainToDataMapper;
 import com.paulorgnascimento.cleanarchitecture.application.mapper.AgregadoDtoToDomainMapper;
-import com.paulorgnascimento.cleanarchitecture.application.mapper.EntidadeDtoToDomainMapper;
-import com.paulorgnascimento.cleanarchitecture.application.mapper.EntidadeDomainToDataMapper;
 import com.paulorgnascimento.cleanarchitecture.domain.aggregateroot.Agregado;
-import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.gateway.Todo;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.AgregadoMapping;
-import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.TB_Entidade;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.repository.AgregadoRepository;
-import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.repository.EntidadeRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AgregadoServiceImpl implements AgregadoService {
@@ -42,5 +39,17 @@ public class AgregadoServiceImpl implements AgregadoService {
         AgregadoMapping agregadoMapping = agregadoTableDtoMapper.domainToData(agregado);
 
         agregadoRepository.save(agregadoMapping);
+    }
+
+    @Override
+    public AgregadoOutDto consultarAgregado(Long id) {
+        Optional<AgregadoMapping> agregadoMappingOptional = agregadoRepository.findById(id);
+
+        if (agregadoMappingOptional.isPresent()) {
+            AgregadoMapping agregadoMapping = agregadoMappingOptional.get();
+            return agregadoTableDtoMapper.dataToDto(agregadoMapping);
+        } else {
+            return null;
+        }
     }
 }

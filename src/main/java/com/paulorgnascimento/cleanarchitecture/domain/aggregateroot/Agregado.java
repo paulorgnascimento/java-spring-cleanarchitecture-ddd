@@ -9,20 +9,20 @@ import java.util.List;
 public class Agregado {
 
     private Long id;
-    private List<Entidade> itens;
-    private ObjetoDeValor objetoDeValorDeEntrega;
+    private List<Entidade> campo1;
+    private ObjetoDeValor campo2;
 
-    public Agregado(List<Entidade> itens, ObjetoDeValor objetoDeValorDeEntrega) {
-        this.itens = new ArrayList<>();
-        this.objetoDeValorDeEntrega = objetoDeValorDeEntrega;
+    public Agregado(List<Entidade> campo1, ObjetoDeValor campo2) {
+        this.campo1 = new ArrayList<>();
+        this.campo2 = campo2;
     }
 
     public Long getId() { return id; }
 
-    public List<Entidade> getItens() { return itens; }
-    public void addItem(Entidade item) { this.itens.add(item); }
+    public List<Entidade> getCampo1() { return campo1; }
+    public void addItem(Entidade item) { this.campo1.add(item); }
 
-    public ObjetoDeValor getEnderecoDeEntrega() { return objetoDeValorDeEntrega; }
+    public ObjetoDeValor getEnderecoDeEntrega() { return campo2; }
 }
 
 
