@@ -2,24 +2,14 @@ package com.paulorgnascimento.cleanarchitecture.domain.valueobject;
 
 public class ObjetoDeValor {
 
-    private String rua;
-    private String cidade;
-    private String estado;
-    private String cep;
+    private String campo1;
 
-    public ObjetoDeValor(String rua, String cidade, String estado, String cep) {
-        this.rua = rua;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
+    public ObjetoDeValor(String campo1, String campo2, String campo3, String campo4) {
+        this.campo1 = campo1;
     }
 
-    public String getRua() { return rua; }
+    public String getCampo1() { return campo1; }
 
-    public String getCidade() { return cidade; }
-
-    public String getEstado() { return estado; }
-
-    public String getCep() { return cep; }
+    // Value Objects geralmente são imutáveis e, assim, não incluem setters e não tem uma identidade única
 }
 

@@ -35,7 +35,7 @@ public class AgregadoServiceImpl implements AgregadoService {
 
         Todo todo = getTodoService.execute(1);
 
-        Agregado agregado = agregadoDtoToDomainMapper.dtoToDomain(agregadoInDto);
+        Agregado agregado = agregadoDtoToDomainMapper.toAgregado(agregadoInDto);
         AgregadoMapping agregadoMapping = agregadoTableDtoMapper.domainToData(agregado);
 
         agregadoRepository.save(agregadoMapping);
