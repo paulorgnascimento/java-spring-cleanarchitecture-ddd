@@ -2,23 +2,20 @@ package com.paulorgnascimento.cleanarchitecture.application.mapper;
 
 import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoInDto;
 import com.paulorgnascimento.cleanarchitecture.domain.aggregateroot.Agregado;
+import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
 import com.paulorgnascimento.cleanarchitecture.domain.valueobject.ObjetoDeValor;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
-@Mapper(componentModel = "spring")
-public interface AgregadoDtoToDomainMapper {
+@Service
+public class AgregadoDtoToDomainMapper {
 
-    AgregadoDtoToDomainMapper INSTANCE = Mappers.getMapper(AgregadoDtoToDomainMapper.class);
+    public Agregado fromDto(AgregadoInDto dto) {
+        // Now let's create the ObjetoDeValor.
+        ObjetoDeValor campo2vo = new ObjetoDeValor(dto.getCampo2());
 
-    @Mapping(source = "campo1", target = "campo1")
-    @Mapping(source = "campo2", target = "campo2", qualifiedByName = "stringToObjetoDeValor")
-    Agregado fromDTO(AgregadoInDto agregadoInDto);
+        // And then create the Agregado.
+        Agregado agregado = new Agregado(dto.getCampo1(), campo2vo);
 
-    @Named("stringToObjetoDeValor")
-    default ObjetoDeValor stringToObjetoDeValor(String campo2) {
-        return new ObjetoDeValor(campo2);
+        return agregado;
     }
 }

@@ -13,7 +13,7 @@ public class Agregado {
     private ObjetoDeValor campo2;
 
     public Agregado(List<Entidade> campo1, ObjetoDeValor campo2) {
-        this.campo1 = new ArrayList<>();
+        this.campo1 = campo1;
         this.campo2 = campo2;
     }
 
