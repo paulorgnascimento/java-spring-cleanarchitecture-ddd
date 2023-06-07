@@ -18,6 +18,6 @@ public class IntegracaoWebClientGateway implements IntegracaoGateway {
                 .uri("/todos/" + id)
                 .retrieve()
                 .bodyToMono(Integracao.class)
-                .block(); // You should avoid using block in a reactive programming, this is for the sake of simplicity
+                .block();
     }
 }

@@ -29,8 +29,6 @@ public class AgregadoMapper {
         return agregado;
     }
 
-    // instanciar um AgregadoOutDto com os dados do AgregadoMapping
-
     public AgregadoOutDto dataMappingToDto(AgregadoMapping agregadoMapping) {
         AgregadoOutDto dto = new AgregadoOutDto();
         dto.setId(agregadoMapping.getId());

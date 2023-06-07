@@ -4,7 +4,9 @@ import com.paulorgnascimento.cleanarchitecture.application.dto.EntidadeInDto;
 import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.AgregadoMapping;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.EntidadeMapping;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EntidadeMapper {
 
     public EntidadeMapping toEntity(Entidade entidade, AgregadoMapping agregadoMapping) {

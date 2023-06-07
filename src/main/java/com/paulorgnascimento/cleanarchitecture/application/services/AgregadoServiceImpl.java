@@ -12,6 +12,7 @@ import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.repository.AgregadoRepository;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.repository.EntidadeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -19,34 +20,36 @@ import java.util.Optional;
 public class AgregadoServiceImpl implements AgregadoService {
 
     private final AgregadoMapper agregadoMapper;
+    private final EntidadeMapper entidadeMapper;
     private final AgregadoRepository agregadoRepository;
-
     private final EntidadeRepository entidadeRepository;
-
     private final IntegracaoService integracaoService;
 
     public AgregadoServiceImpl(AgregadoMapper agregadoMapper,
+                               EntidadeMapper entidadeMapper,
                                AgregadoRepository agregadoRepository,
                                IntegracaoService integracaoService,
                                EntidadeRepository entidadeRepository) {
         this.agregadoMapper = agregadoMapper;
+        this.entidadeMapper = entidadeMapper;
         this.agregadoRepository = agregadoRepository;
         this.integracaoService = integracaoService;
         this.entidadeRepository = entidadeRepository;
     }
 
     @Override
+    @Transactional
     public void criarAgregado(AgregadoInDto agregadoInDto) {
-
         Integracao integracao = integracaoService.execute(1);
-
         Agregado agregado = agregadoMapper.fromDto(agregadoInDto);
-        AgregadoMapping agregadoMapping = new AgregadoMapper().toEntity(agregado);
-
+        AgregadoMapping agregadoMapping = agregadoMapper.toEntity(agregado);
         agregadoRepository.save(agregadoMapping);
+        salvarEntidades(agregadoInDto, agregadoMapping);
+    }
 
+    private void salvarEntidades(AgregadoInDto agregadoInDto, AgregadoMapping agregadoMapping) {
         for (Entidade entidade : agregadoInDto.getCampo1()) {
-            EntidadeMapping entidadeMapping = new EntidadeMapper().toEntity(entidade, agregadoMapping);
+            EntidadeMapping entidadeMapping = entidadeMapper.toEntity(entidade, agregadoMapping);
             entidadeRepository.save(entidadeMapping);
         }
     }
@@ -54,12 +57,6 @@ public class AgregadoServiceImpl implements AgregadoService {
     @Override
     public AgregadoOutDto consultarAgregado(Long id) {
         Optional<AgregadoMapping> agregadoMappingOptional = agregadoRepository.findById(id);
-
-        if (agregadoMappingOptional.isPresent()) {
-            AgregadoMapping agregadoMapping = agregadoMappingOptional.get();
-            return agregadoMapper.dataMappingToDto(agregadoMapping);
-        } else {
-            return null;
-        }
+        return agregadoMappingOptional.map(agregadoMapper::dataMappingToDto).orElse(null);
     }
 }
