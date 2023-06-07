@@ -1,6 +1,7 @@
 package com.paulorgnascimento.cleanarchitecture.application.mapper;
 
 import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoInDto;
+import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoOutDto;
 import com.paulorgnascimento.cleanarchitecture.domain.aggregateroot.Agregado;
 import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
 import com.paulorgnascimento.cleanarchitecture.domain.valueobject.ObjetoDeValor;
@@ -26,5 +27,14 @@ public class AgregadoMapper {
         ObjetoDeValor campo2vo = new ObjetoDeValor(dto.getCampo2());
         Agregado agregado = new Agregado(dto.getCampo1(), campo2vo);
         return agregado;
+    }
+
+    // instanciar um AgregadoOutDto com os dados do AgregadoMapping
+
+    public AgregadoOutDto dataMappingToDto(AgregadoMapping agregadoMapping) {
+        AgregadoOutDto dto = new AgregadoOutDto();
+        dto.setId(agregadoMapping.getId());
+        dto.setCampo2(agregadoMapping.getObjetoDeValor());
+        return dto;
     }
 }

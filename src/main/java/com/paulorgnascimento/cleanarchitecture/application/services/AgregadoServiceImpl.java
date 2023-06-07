@@ -57,8 +57,7 @@ public class AgregadoServiceImpl implements AgregadoService {
 
         if (agregadoMappingOptional.isPresent()) {
             AgregadoMapping agregadoMapping = agregadoMappingOptional.get();
-            return null;
-            // ; return agregadoTableDtoMapper.dataToDto(agregadoMapping);
+            return agregadoMapper.dataMappingToDto(agregadoMapping);
         } else {
             return null;
         }

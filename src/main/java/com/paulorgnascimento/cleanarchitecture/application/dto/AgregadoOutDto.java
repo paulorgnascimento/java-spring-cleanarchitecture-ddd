@@ -12,7 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 public class AgregadoOutDto {
-    private int id;
-    private List<EntidadeInDto> campo1;
+    private long id;
     private String campo2;
 }
