@@ -2,7 +2,6 @@ package com.paulorgnascimento.cleanarchitecture.application.services;
 
 import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoInDto;
 import com.paulorgnascimento.cleanarchitecture.application.dto.AgregadoOutDto;
-import com.paulorgnascimento.cleanarchitecture.application.mapper.AgregadoDtoToDomainMapper;
 import com.paulorgnascimento.cleanarchitecture.application.mapper.AgregadoMapper;
 import com.paulorgnascimento.cleanarchitecture.application.mapper.EntidadeMapper;
 import com.paulorgnascimento.cleanarchitecture.domain.aggregateroot.Agregado;
@@ -19,18 +18,18 @@ import java.util.Optional;
 @Service
 public class AgregadoServiceImpl implements AgregadoService {
 
-    private final AgregadoDtoToDomainMapper agregadoDtoToDomainMapper;
+    private final AgregadoMapper agregadoMapper;
     private final AgregadoRepository agregadoRepository;
 
     private final EntidadeRepository entidadeRepository;
 
     private final GetTodoService getTodoService;
 
-    public AgregadoServiceImpl(AgregadoDtoToDomainMapper agregadoDtoToDomainMapper,
+    public AgregadoServiceImpl(AgregadoMapper agregadoMapper,
                                AgregadoRepository agregadoRepository,
                                GetTodoService getTodoService,
                                EntidadeRepository entidadeRepository) {
-        this.agregadoDtoToDomainMapper = agregadoDtoToDomainMapper;
+        this.agregadoMapper = agregadoMapper;
         this.agregadoRepository = agregadoRepository;
         this.getTodoService = getTodoService;
         this.entidadeRepository = entidadeRepository;
@@ -41,7 +40,7 @@ public class AgregadoServiceImpl implements AgregadoService {
 
         Todo todo = getTodoService.execute(1);
 
-        Agregado agregado = agregadoDtoToDomainMapper.fromDto(agregadoInDto);
+        Agregado agregado = agregadoMapper.fromDto(agregadoInDto);
         AgregadoMapping agregadoMapping = new AgregadoMapper().toEntity(agregado);
 
         agregadoRepository.save(agregadoMapping);
