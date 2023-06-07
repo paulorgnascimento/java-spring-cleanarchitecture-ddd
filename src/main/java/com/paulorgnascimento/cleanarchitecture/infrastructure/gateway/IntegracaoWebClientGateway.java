@@ -4,20 +4,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
-public class TodoWebClientGateway implements TodoGateway {
+public class IntegracaoWebClientGateway implements IntegracaoGateway {
 
     private final WebClient webClient;
 
-    public TodoWebClientGateway(WebClient.Builder webClientBuilder) {
+    public IntegracaoWebClientGateway(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl("https://jsonplaceholder.typicode.com").build();
     }
 
     @Override
-    public Todo getTodoById(int id) {
+    public Integracao getTodoById(int id) {
         return webClient.get()
                 .uri("/todos/" + id)
                 .retrieve()
-                .bodyToMono(Todo.class)
+                .bodyToMono(Integracao.class)
                 .block(); // You should avoid using block in a reactive programming, this is for the sake of simplicity
     }
 }

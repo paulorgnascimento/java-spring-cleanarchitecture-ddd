@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Todo {
+public class Integracao {
     private int userId;
     private int id;
     private String title;

@@ -6,7 +6,7 @@ import com.paulorgnascimento.cleanarchitecture.application.mapper.AgregadoMapper
 import com.paulorgnascimento.cleanarchitecture.application.mapper.EntidadeMapper;
 import com.paulorgnascimento.cleanarchitecture.domain.aggregateroot.Agregado;
 import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
-import com.paulorgnascimento.cleanarchitecture.infrastructure.gateway.Todo;
+import com.paulorgnascimento.cleanarchitecture.infrastructure.gateway.Integracao;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.AgregadoMapping;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.EntidadeMapping;
 import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.repository.AgregadoRepository;
@@ -23,22 +23,22 @@ public class AgregadoServiceImpl implements AgregadoService {
 
     private final EntidadeRepository entidadeRepository;
 
-    private final GetTodoService getTodoService;
+    private final IntegracaoService integracaoService;
 
     public AgregadoServiceImpl(AgregadoMapper agregadoMapper,
                                AgregadoRepository agregadoRepository,
-                               GetTodoService getTodoService,
+                               IntegracaoService integracaoService,
                                EntidadeRepository entidadeRepository) {
         this.agregadoMapper = agregadoMapper;
         this.agregadoRepository = agregadoRepository;
-        this.getTodoService = getTodoService;
+        this.integracaoService = integracaoService;
         this.entidadeRepository = entidadeRepository;
     }
 
     @Override
     public void criarAgregado(AgregadoInDto agregadoInDto) {
 
-        Todo todo = getTodoService.execute(1);
+        Integracao integracao = integracaoService.execute(1);
 
         Agregado agregado = agregadoMapper.fromDto(agregadoInDto);
         AgregadoMapping agregadoMapping = new AgregadoMapper().toEntity(agregado);
