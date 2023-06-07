@@ -1,20 +1,20 @@
 package com.paulorgnascimento.cleanarchitecture.application.mapper;
 
 import com.paulorgnascimento.cleanarchitecture.domain.entity.Entidade;
-import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.AgregadoEntity;
-import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.EntidadeEntity;
+import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.AgregadoMapping;
+import com.paulorgnascimento.cleanarchitecture.infrastructure.persistence.entity.EntidadeMapping;
 
 public class EntidadeMapper {
 
-    public EntidadeEntity toEntity(Entidade entidade, AgregadoEntity agregadoEntity) {
-        EntidadeEntity entidadeEntity = new EntidadeEntity();
-        entidadeEntity.setCampo1(entidade.getCampo1());
-        entidadeEntity.setCampo2(entidade.getCampo2());
-        entidadeEntity.setCampo3(entidade.getCampo3());
-        entidadeEntity.setCampo4(entidade.getCampo4());
-        entidadeEntity.setCampo5(entidade.getCampo5());
-        entidadeEntity.setAgregado(agregadoEntity);
-        return entidadeEntity;
+    public EntidadeMapping toEntity(Entidade entidade, AgregadoMapping agregadoMapping) {
+        EntidadeMapping entidadeMapping = new EntidadeMapping();
+        entidadeMapping.setCampo1(entidade.getCampo1());
+        entidadeMapping.setCampo2(entidade.getCampo2());
+        entidadeMapping.setCampo3(entidade.getCampo3());
+        entidadeMapping.setCampo4(entidade.getCampo4());
+        entidadeMapping.setCampo5(entidade.getCampo5());
+        entidadeMapping.setAgregado(agregadoMapping);
+        return entidadeMapping;
     }
 
 }

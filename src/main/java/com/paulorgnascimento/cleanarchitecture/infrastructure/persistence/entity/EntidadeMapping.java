@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "entidade")
 @Data
 @NoArgsConstructor
-public class EntidadeEntity {
+public class EntidadeMapping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +32,5 @@ public class EntidadeEntity {
 
     @ManyToOne
     @JoinColumn(name="agregado_id", nullable=false)
-    private AgregadoEntity agregado;
+    private AgregadoMapping agregado;
 }
