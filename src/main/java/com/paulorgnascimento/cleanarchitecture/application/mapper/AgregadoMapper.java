@@ -23,12 +23,8 @@ public class AgregadoMapper {
     }
 
     public Agregado fromDto(AgregadoInDto dto) {
-        // Now let's create the ObjetoDeValor.
         ObjetoDeValor campo2vo = new ObjetoDeValor(dto.getCampo2());
-
-        // And then create the Agregado.
         Agregado agregado = new Agregado(dto.getCampo1(), campo2vo);
-
         return agregado;
     }
 }
